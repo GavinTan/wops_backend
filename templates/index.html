@@ -1,0 +1,33 @@
+<img src="" id="img" width="50%"/>
+
+
+<script type="text/javascript" charset="utf-8">
+var ws;
+var pyip='127.0.0.1';
+function startWS() {
+    console.log('start once again');
+    ws = new WebSocket("ws://"+pyip+":8000"+'/vnc/');
+    ws.onopen =  function (msg) {
+        console.log('webSocket opened');
+    };
+    ws.onmessage = function (message) {
+        //console.log('receive message : ' + message.data);
+        document.getElementById("img").src = message.data
+		//var image = new Image();
+		//image.onload = function () {
+		//	context.clearRect(0, 0,  canvas.width, canvas.height);
+		//	context.drawImage(image, 0, 0,canvas.width, canvas.height);
+		//}
+		//image.src =message.data;
+    };
+    ws.onerror = function (error) {
+        console.log('error :' + error.name + error.number);
+    };
+    ws.onclose =  function () {
+        console.log('webSocket closed');
+    };
+    // ws.send("websocket from js");
+}
+startWS();
+
+</script>

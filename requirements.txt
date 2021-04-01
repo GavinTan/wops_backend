@@ -1,0 +1,9 @@
+django
+django-redis
+django-cors-headers
+djangorestframework
+lxml
+libvirt-python
+https://github.com/twisted/twisted/archive/twisted-20.3.0.zip
+channels
+websockify
